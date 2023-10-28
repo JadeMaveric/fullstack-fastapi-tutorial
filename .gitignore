@@ -1,0 +1,10 @@
+# Python virtual environment
+.venv
+
+# Compiled Python bytecode
+__pycache__
+*.py[cod]
+
+# Editor config
+.idea/
+.vscode
