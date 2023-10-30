@@ -16,6 +16,8 @@
    - Windows: `\venv\Scripts\activate`
 6. Install the dependencies `pip install -r requirements.txt`
 7. To test that it's working
-    - Run the `start.bat` file to start the server
+    - Start the server
+      - Linux/MacOS: `./start.sh`
+      - Windows: `\start.bat`
     - Wait until the log prints `INFO:  Application startup complete.`
     - Using a browser visit the [Homepage](http://localhost:7000/) or the [API Docs](http://localhost:7000/docs)
