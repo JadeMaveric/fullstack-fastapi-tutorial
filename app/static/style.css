@@ -1,0 +1,24 @@
+body {
+  display: flex;
+  justify-content: center;
+}
+
+.inline-form {
+  display: inline;
+}
+
+.text-black {
+  color: black;
+}
+
+.text-gray {
+  color: #808080;
+}
+
+.text-green {
+  color: green;
+}
+
+.text-bold {
+  font-weight: bold;
+}

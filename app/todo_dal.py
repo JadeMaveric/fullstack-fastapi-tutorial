@@ -1,6 +1,4 @@
-from pprint import pprint
-
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Form, HTTPException
 from pydantic import BaseModel
 
 router = APIRouter(prefix="/api/todo")
@@ -34,7 +32,7 @@ def fetch_all_todos() -> list[Todo]:
 
 
 @router.post("/")
-def create_new_todo(description: str) -> Todo:
+def create_new_todo(description: str = Form(...)) -> Todo:
     global _todo_id_counter, _todo_database
 
     todo = Todo(id=_todo_id_counter, description=description, completed=False)
@@ -61,12 +59,7 @@ def mark_todo_as_done(todo_id: int) -> Todo:
 
 
 @router.put("/change-description/{todo_id}")
-def change_todo_description(todo_id: int, description: str) -> Todo:
+def change_todo_description(todo_id: int, description: str = Form(...)) -> Todo:
     todo = _todo_database[todo_id]
     todo.description = description
     return todo
-
-
-# For testing...
-def print_database():
-    pprint(_todo_database)

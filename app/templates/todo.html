@@ -1,0 +1,16 @@
+<div>
+  <span>
+    <form class="inline-form" action="/app/mark-as-done/{{todo.id}}" method="post">
+      <button
+        type="submit"
+        class={{ "text-green" if todo.completed else "text-gray" }}
+        {{ "disabled" if todo.completed else ''}}
+      >
+        ✔
+      </button>
+    </form>
+  </span>
+  <span class={{ "text-bold" if not todo.completed else ""}}>
+    {{ todo.description }}
+  </span>
+</div>

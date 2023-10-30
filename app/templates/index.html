@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title></title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="/static/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div id="app">
+    <h1>Task Manager</h1>
+    {% for todo in todos %}
+    <div>
+      <span>
+        <form class="inline-form" action="/app/mark-as-done/{{todo.id}}" method="post">
+          <button type="submit" class={{ "text-green" if todo.completed else "text-gray" }} {{ "disabled" if
+            todo.completed else '' }}>
+            ✔
+          </button>
+        </form>
+      </span>
+      <span class={{ "text-bold" if not todo.completed else "" }}>
+        {{ todo.description }}
+      </span>
+    </div>
+    {% endfor %}
+    <br />
+    <form action="/app/add-todo" method="post">
+      <input name="description" type="text" autofocus/>
+      <button type="submit">Add</button>
+    </form>
+  </div>
+</body>
+
+</html>
