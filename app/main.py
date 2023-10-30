@@ -5,18 +5,24 @@ from fastapi.templating import Jinja2Templates
 
 from . import todo_dal
 
+# FastAPI is a easy to use, but very powerful webserver
+# https://fastapi.tiangolo.com/learn/
 app = FastAPI()
 
 # Serve static files, primarily meant to import frontend libraries
+# https://fastapi.tiangolo.com/reference/staticfiles/
 app.mount("/static", StaticFiles(directory="app/static"), name="static")
 
+# A router allows the web server to be split into multiple files
+# https://fastapi.tiangolo.com/tutorial/bigger-applications/
 app.include_router(todo_dal.router)
 
 
-# Homepage
+# https://fastapi.tiangolo.com/reference/templating
 templates = Jinja2Templates(directory="app/templates")
 
 
+# Homepage
 @app.get("/")
 def homepage(request: Request):
     todos = todo_dal.fetch_all_todos()
